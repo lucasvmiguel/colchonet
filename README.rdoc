@@ -1,3 +1,6 @@
+Para rodar o RVM:
+	source ~/.rvm/scripts/rvm
+
 == README
 
 This README would normally document whatever steps are necessary to get the
