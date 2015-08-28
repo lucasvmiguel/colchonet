@@ -1,0 +1,10 @@
+<h1><%= t 'signup.title' %></h1>
+<p>
+  <%= t 'signup.body', full_name: @user.full_name %>
+</p>
+<p>
+  <%= t 'signup.confirm_link_html', link: link_to(@confirmation_link, @confimation_link) %>
+</p>
+<p>
+  <%= t 'signup.thanks_html', link: link_to('Colcho.net', root_url) %>
+</p>

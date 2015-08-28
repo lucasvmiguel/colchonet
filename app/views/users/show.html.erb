@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h1><%= t 'users.show.full_name', full_name: @user.full_name %></h1>
+<ul>
+  <li><%= t 'users.show.location', location: @user.location %></li>
+  <li><%= t 'users.show.bio', bio: @user.bio %></li>
+</ul>
+<%= link_to t('links.edit'), edit_user_path(@user) %>
+<%= link_to 'Home', root_path %>
