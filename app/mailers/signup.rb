@@ -1,16 +1,17 @@
-class Signup < ActionMailer::based
+class Signup < ActionMailer::Base
   default from: 'no-reply@colcho.net'
 
-  def confirm_email user
+# TODO problema ao enviar email com html!!!
+  def confirm_email(user)
 
     @user = user
-    @confirm_link = root_url
+    @confirmation_link = confirmation_url({token: @user.confirmation_token})
 
     mail({
-      to: user.email
-      bcc: ['sign ups <signups@colcho.net>']
-      subject: I18n.t('signupd.confirm_email.subject')
-      })
+      :to => user.email,
+      :bcc => ['sign ups <signups@colcho.net>'],
+      :subject => I18n.t('signup.confirm_email.subject')
+    })
   end
 
 end

@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|pt/ do
     resources :rooms
     resources :users
+    # resource :confirmation, only: [:show]
   end
 
-  get '/:locale' => 'home#index', locale: /en|pt/
+  # get '/:locale' => 'home#index', locale: /en|pt/
+  resource :confirmation, only: [:show]
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

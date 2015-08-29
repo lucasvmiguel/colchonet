@@ -4,11 +4,23 @@ class User < ActiveRecord::Base
 
 
   #validates_confirmation_of :password
-  validates_presence_of :email, :full_name, :location, :password
+  validates_presence_of :email, :full_name, :location
   validates_length_of :bio, minimum: 30, allow_blank: false
   validate :email_format
 
   has_secure_password
+
+  def confirm!
+    return if confirmed?
+
+    self.confirmed_at = Time.current
+    self.confirmation_token = ''
+    save!
+  end
+
+  def confirmed?
+    confirmed_at.present?
+  end
 
   private
 
@@ -24,4 +36,9 @@ class User < ActiveRecord::Base
   def email_format
     errors.add(:email, :invalid) unless email.match(EMAIL_REGEX)
   end
+
+  before_create do |user|
+    user.confirmation_token = SecureRandom.urlsafe_base64
+  end
+
 end
