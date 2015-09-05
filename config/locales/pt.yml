@@ -20,8 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt:
+  flash:
+    notice:
+      signed_in: login feito com sucesso
   confirmations:
-    success: Emai confirmado com sucesso, obrigado!
+    success: Email confirmado com sucesso, obrigado!
+
+  user_sessions:
+    new:
+      title: Login
+      sign_up: Cadastre-se
   signup:
     confirm_email:
       subject: 'Colcho.net - Confirme seu e-mail'
@@ -181,6 +189,8 @@ pt:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+      user_session:
+        create: 'Entrar'
   number:
     currency:
       format:
@@ -250,8 +260,14 @@ pt:
     pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
+    attributes:
+      user_session:
+        email: E-mail
+        password: Senha
     errors:
-      <<: *errors
+      messages:
+        invalid_login: 'Usuário ou senha inválidos'
+
   activerecord:
     models:
       user: Usuário
@@ -269,4 +285,3 @@ pt:
         location: Localização
         title: Título
     errors:
-      <<: *errors
